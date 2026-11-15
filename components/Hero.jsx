@@ -85,9 +85,22 @@ export default function Hero() {
             the partnerships that keep them there.
           </p>
           <a href="#contact" className="btn" data-magnetic>
-            <span>Work with us</span>
-            <span className="btn-arrow" aria-hidden>↗</span>
-          </a>
+  <span>Work with us</span>
+  <span className="btn-arrow" aria-hidden>
+    <svg
+      viewBox="0 0 24 24"
+      width="1em"
+      height="1em"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M7 17L17 7M9 7h8v8" />
+    </svg>
+  </span>
+</a>
         </div>
 
         <ul className="hero-tags mono">
