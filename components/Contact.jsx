@@ -95,7 +95,20 @@ export default function Contact() {
             </label>
             <button type="submit" className="btn btn-light" data-magnetic>
               <span>Send inquiry</span>
-              <span className="btn-arrow" aria-hidden>↗</span>
+              <span className="btn-arrow" aria-hidden>
+                <svg
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  height="1em"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M7 17L17 7M9 7h8v8" />
+                </svg>
+              </span>
             </button>
             <p className="ct-status mono" role="status" aria-live="polite">
               {status}
@@ -115,4 +128,3 @@ export default function Contact() {
     </footer>
   );
 }
-
