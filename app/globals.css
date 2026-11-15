@@ -347,9 +347,9 @@ textarea {
   position: relative;
   min-height: 100svh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   overflow: hidden;
-  padding: 8rem 0 4.5rem;
+  padding: 7rem 0 4rem;
   background:
     radial-gradient(90% 70% at 15% 10%, var(--red-mid) 0%, transparent 60%),
     radial-gradient(80% 70% at 90% 100%, #4b0810 0%, transparent 60%),

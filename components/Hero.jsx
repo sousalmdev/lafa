@@ -19,14 +19,16 @@ export default function Hero() {
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reduce) return;
 
+      gsap.utils.toArray(".hero-bg-logo .lafa-path").forEach((p) => {
+        p.style.strokeDasharray = p.getTotalLength();
+      });
       const intro = gsap.timeline({ paused: true, defaults: { ease: "expo.out" } });
       intro
         .from(".hero-bg-logo .lafa-path", {
-          opacity: 0,
-          yPercent: 8,
-          duration: 1.8,
-          stagger: 0.15,
-          ease: "expo.out",
+          strokeDashoffset: (i, t) => t.getTotalLength(),
+          duration: 2.4,
+          stagger: 0.2,
+          ease: "power2.inOut",
         }, 0)
         .from(".hero-title .wi", { yPercent: 115, rotate: 4, duration: 1.4, stagger: 0.07 }, 0.15)
         .from(".hero-foot > *", { y: 30, opacity: 0, duration: 1.1, stagger: 0.1 }, 0.7)
@@ -64,7 +66,9 @@ export default function Hero() {
       </div>
       <LafaLogo
         className="hero-bg-logo"
-        fill="rgba(234,227,213,0.4)"
+        fill="none"
+        stroke="rgba(234,227,213,0.16)"
+        strokeWidth={6}
         aria-hidden
       />
 
