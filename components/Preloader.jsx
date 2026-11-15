@@ -54,8 +54,8 @@ export default function Preloader() {
               counter.current.textContent = String(Math.round(state.v)).padStart(3, "0");
           },
         }, 0.2)
-        // 2. ink floods in, outline dissolves
-        .to(paths, { fill: "#B62A43", duration: 0.8, stagger: 0.1, ease: "power2.out" }, 1.9)
+        // 2. ink floods in (beige), outline dissolves
+        .to(paths, { fill: "#EAE3D5", duration: 0.8, stagger: 0.1, ease: "power2.out" }, 1.9)
         .to(paths, { strokeOpacity: 0, duration: 0.6 }, 2.2)
         .fromTo(
           ".pl-glow",
@@ -95,4 +95,3 @@ export default function Preloader() {
     </div>
   );
 }
-
