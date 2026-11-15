@@ -100,7 +100,18 @@ export default function Services() {
               <h3 className="sv-title sv-in">{name}</h3>
               <p className="sv-desc sv-in">{desc}</p>
               <span className="sv-arrow sv-in" aria-hidden>
-                ↗
+                <svg
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  height="1em"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M7 17L17 7M9 7h8v8" />
+                </svg>
               </span>
             </li>
           ))}
@@ -109,4 +120,3 @@ export default function Services() {
     </section>
   );
 }
-
