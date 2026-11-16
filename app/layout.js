@@ -34,8 +34,30 @@ export const metadata = {
     description:
       "Partnerships, Visibility, Collaborations, Brand Management, Marketing and Consulting.",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Lafa Agency - Talent and Creators Agency",
+      },
+    ],
   },
-  icons: { icon: "/Lafa.svg" },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lafa Agency - Talent and Creators Agency",
+    description:
+      "Partnerships, Visibility, Collaborations, Brand Management, Marketing and Consulting.",
+    images: ["/og-image.png"],
+  },
+  icons: {
+    icon: [
+      { url: "/shortcut-icon.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    shortcut: "/shortcut-icon.png",
+    apple: "/shortcut-icon.png",
+  },
 };
 
 export const viewport = { themeColor: "#2a0509" };
