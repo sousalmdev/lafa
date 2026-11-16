@@ -31,34 +31,32 @@ export default function Cursor() {
       gsap.to(el, { opacity: 0, duration: 0.3 });
     };
 
-    // magnetic buttons: work only while the pointer is over the element itself
-    const cleanups = [];
-    document.querySelectorAll("[data-magnetic]").forEach((m) => {
-      const onMove = (e) => {
-        const r = m.getBoundingClientRect();
-        gsap.to(m, {
-          x: (e.clientX - r.left - r.width / 2) * 0.3,
-          y: (e.clientY - r.top - r.height / 2) * 0.3,
-          duration: 0.4,
-          ease: "power3.out",
-          overwrite: "auto",
-        });
-      };
-      const onLeave = () =>
-        gsap.to(m, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1,0.5)", overwrite: "auto" });
-      m.addEventListener("mousemove", onMove, { passive: true });
-      m.addEventListener("mouseleave", onLeave);
-      cleanups.push(() => {
-        m.removeEventListener("mousemove", onMove);
-        m.removeEventListener("mouseleave", onLeave);
+    // magnetic buttons via delegation: survives re-renders and Fast Refresh
+    let mag = null;
+    const reset = (m) =>
+      gsap.to(m, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1,0.45)", overwrite: "auto" });
+    const magMove = (e) => {
+      const m = e.target.closest?.("[data-magnetic]") || null;
+      if (m !== mag) {
+        if (mag) reset(mag);
+        mag = m;
+      }
+      if (!m) return;
+      const r = m.getBoundingClientRect();
+      gsap.to(m, {
+        x: (e.clientX - r.left - r.width / 2) * 0.35,
+        y: (e.clientY - r.top - r.height / 2) * 0.35,
+        duration: 0.4,
+        ease: "power3.out",
+        overwrite: "auto",
       });
-    });
-
+    };
     window.addEventListener("mousemove", move, { passive: true });
+    window.addEventListener("mousemove", magMove, { passive: true });
     window.addEventListener("mouseover", over, { passive: true });
     document.documentElement.addEventListener("mouseleave", leave);
     return () => {
-      cleanups.forEach((c) => c());
+      window.removeEventListener("mousemove", magMove);
       window.removeEventListener("mousemove", move);
       window.removeEventListener("mouseover", over);
       document.documentElement.removeEventListener("mouseleave", leave);

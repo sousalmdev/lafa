@@ -22,10 +22,14 @@ const mono = DM_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://lafaagency.com"),
+  alternates: { canonical: "/" },
   title: "Lafa Agency - Talent and Creators Agency",
   description:
     "Lafa Agency - Talent and Creators Agency. Partnerships, Visibility, Collaborations, Brand Management, Marketing and Consulting for the creators shaping culture.",
   openGraph: {
+    url: "https://lafaagency.com",
+    siteName: "Lafa Agency",
     title: "Lafa Agency - Talent and Creators Agency",
     description:
       "Partnerships, Visibility, Collaborations, Brand Management, Marketing and Consulting.",

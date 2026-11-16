@@ -70,10 +70,7 @@ export default function Endless() {
           </span>
         ))}
       </div>
-      <h2 className="sr-only">Endless. No limit.</h2>
-      <div className="endless-sub">
-        <p>Infinite cultural reach for talent with no ceiling.</p>
-      </div>
+
     </section>
   );
 }

@@ -118,6 +118,51 @@ export default function Contact() {
 
         <LafaLogo className="ct-logo" fill="none" stroke="#EAE3D5" strokeWidth={12} aria-hidden />
 
+        <div className="ct-footer">
+          <div className="ct-col ct-col-brand">
+            <p className="ct-brand-title">Lafa Agency</p>
+            <p className="ct-brand-desc">
+              Talent and Creators Agency representing the voices shaping modern culture.
+            </p>
+            <a href="mailto:hello@lafaagency.com" className="ct-mail link-roll">
+              <span data-text="hello@lafaagency.com">hello@lafaagency.com</span>
+            </a>
+          </div>
+
+          <div className="ct-col">
+            <span className="ct-col-label mono">Navigation</span>
+            <ul>
+              <li><a href="#top" className="link-roll"><span data-text="Home">Home</span></a></li>
+              <li><a href="#about" className="link-roll"><span data-text="About">About</span></a></li>
+              <li><a href="#team" className="link-roll"><span data-text="Leadership">Leadership</span></a></li>
+              <li><a href="#services" className="link-roll"><span data-text="Services">Services</span></a></li>
+              <li><a href="#contact" className="link-roll"><span data-text="Contact">Contact</span></a></li>
+            </ul>
+          </div>
+
+          <div className="ct-col">
+            <span className="ct-col-label mono">Services</span>
+            <ul>
+              <li><a href="#services" className="link-roll"><span data-text="Partnerships">Partnerships</span></a></li>
+              <li><a href="#services" className="link-roll"><span data-text="Visibility">Visibility</span></a></li>
+              <li><a href="#services" className="link-roll"><span data-text="Collaborations">Collaborations</span></a></li>
+              <li><a href="#services" className="link-roll"><span data-text="Brand Management">Brand Management</span></a></li>
+              <li><a href="#services" className="link-roll"><span data-text="Marketing">Marketing</span></a></li>
+              <li><a href="#services" className="link-roll"><span data-text="Consulting">Consulting</span></a></li>
+            </ul>
+          </div>
+
+          <div className="ct-col">
+            <span className="ct-col-label mono">Connect</span>
+            <ul>
+              <li><a href="https://instagram.com" target="_blank" rel="noreferrer" className="link-roll"><span data-text="Instagram">Instagram</span></a></li>
+              <li><a href="https://tiktok.com" target="_blank" rel="noreferrer" className="link-roll"><span data-text="TikTok">TikTok</span></a></li>
+              <li><a href="https://youtube.com" target="_blank" rel="noreferrer" className="link-roll"><span data-text="YouTube">YouTube</span></a></li>
+              <li><a href="https://linkedin.com" target="_blank" rel="noreferrer" className="link-roll"><span data-text="LinkedIn">LinkedIn</span></a></li>
+            </ul>
+          </div>
+        </div>
+
         <div className="ct-bottom mono">
           <span>© {new Date().getFullYear()} Lafa Agency - Talent and Creators Agency</span>
           <a href="#top" className="link-roll">
