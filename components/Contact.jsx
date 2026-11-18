@@ -12,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 export default function Contact() {
   const root = useRef(null);
   const [status, setStatus] = useState("");
+  const [sending, setSending] = useState(false);
 
   useGSAP(
     () => {
@@ -50,12 +51,39 @@ export default function Contact() {
     { scope: root }
   );
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    const f = new FormData(e.currentTarget);
-    if (!f.get("name") || !f.get("email")) return setStatus("Please add your name and email.");
-    setStatus(`Thanks, ${f.get("name")}, we’ll be in touch about ${f.get("service")}.`);
-    e.currentTarget.reset();
+    if (sending) return;
+    const form = e.currentTarget;
+    const f = new FormData(form);
+    const name = String(f.get("name") || "").trim();
+    const email = String(f.get("email") || "").trim();
+    const service = String(f.get("service") || "Partnerships").trim();
+    const message = String(f.get("message") || "").trim();
+
+    if (!name || !email) return setStatus("Please add your name and email.");
+
+    setSending(true);
+    setStatus("Sending inquiry…");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, service, message }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setStatus(data.error || "Could not send inquiry. Please try again.");
+      } else {
+        setStatus(`Thanks, ${name}, we’ll be in touch about ${service}.`);
+        form.reset();
+      }
+    } catch {
+      setStatus("Network error. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -93,8 +121,8 @@ export default function Contact() {
               <span className="mono">Brief</span>
               <textarea name="message" rows={3} placeholder="Tell us about the talent or project…" />
             </label>
-            <button type="submit" className="btn btn-light" data-magnetic>
-              <span>Send inquiry</span>
+            <button type="submit" className="btn btn-light" data-magnetic disabled={sending}>
+              <span>{sending ? "Sending…" : "Send inquiry"}</span>
               <span className="btn-arrow" aria-hidden>
                 <svg
                   viewBox="0 0 24 24"
@@ -124,8 +152,8 @@ export default function Contact() {
             <p className="ct-brand-desc">
               Talent and Creators Agency representing the voices shaping modern culture.
             </p>
-            <a href="mailto:hello@lafaagency.com" className="ct-mail link-roll">
-              <span data-text="hello@lafaagency.com">hello@lafaagency.com</span>
+            <a href="mailto:business@lafaagency.com" className="ct-mail link-roll">
+              <span data-text="business@lafaagency.com">business@lafaagency.com</span>
             </a>
           </div>
 
@@ -156,9 +184,6 @@ export default function Contact() {
             <span className="ct-col-label mono">Connect</span>
             <ul>
               <li><a href="https://instagram.com" target="_blank" rel="noreferrer" className="link-roll"><span data-text="Instagram">Instagram</span></a></li>
-              <li><a href="https://tiktok.com" target="_blank" rel="noreferrer" className="link-roll"><span data-text="TikTok">TikTok</span></a></li>
-              <li><a href="https://youtube.com" target="_blank" rel="noreferrer" className="link-roll"><span data-text="YouTube">YouTube</span></a></li>
-              <li><a href="https://linkedin.com" target="_blank" rel="noreferrer" className="link-roll"><span data-text="LinkedIn">LinkedIn</span></a></li>
             </ul>
           </div>
         </div>

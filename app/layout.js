@@ -1,4 +1,5 @@
 import { Bricolage_Grotesque, Instrument_Serif, DM_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({
@@ -65,7 +66,10 @@ export const viewport = { themeColor: "#2a0509" };
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${display.variable} ${serif.variable} ${mono.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
